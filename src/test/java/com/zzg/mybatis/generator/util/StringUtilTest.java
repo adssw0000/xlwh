@@ -12,6 +12,7 @@ public class StringUtilTest {
     public void testDbStringToCamelStyle() {
         String result = MyStringUtils.dbStringToCamelStyle("person_address");
         Assert.assertEquals("PersonAddress", result);
+        System.out.println(1);
     }
 
     @Test
