@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com\zzg\mybatis\entity\mapper.LevelDAO">
+  <resultMap id="BaseResultMap" type="com\zzg\mybatis\entity.Level">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="code" jdbcType="INTEGER" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="modifie_date" jdbcType="VARCHAR" property="modifieDate" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="delete_date" jdbcType="VARCHAR" property="deleteDate" />
+    <result column="deleter" jdbcType="VARCHAR" property="deleter" />
+    <result column="data_state" jdbcType="INTEGER" property="dataState" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, `name`, money, num, creater, modifie_date, modifier, delete_date, deleter, 
+    data_state, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from level
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from level
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com\zzg\mybatis\entity.Level" useGeneratedKeys="true">
+    insert into level (code, `name`, money, 
+      num, creater, modifie_date, 
+      modifier, delete_date, deleter, 
+      data_state, remark)
+    values (#{code,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
+      #{num,jdbcType=INTEGER}, #{creater,jdbcType=VARCHAR}, #{modifieDate,jdbcType=VARCHAR}, 
+      #{modifier,jdbcType=VARCHAR}, #{deleteDate,jdbcType=VARCHAR}, #{deleter,jdbcType=VARCHAR}, 
+      #{dataState,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com\zzg\mybatis\entity.Level" useGeneratedKeys="true">
+    insert into level
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="modifieDate != null">
+        modifie_date,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="deleteDate != null">
+        delete_date,
+      </if>
+      <if test="deleter != null">
+        deleter,
+      </if>
+      <if test="dataState != null">
+        data_state,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifieDate != null">
+        #{modifieDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteDate != null">
+        #{deleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleter != null">
+        #{deleter,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null">
+        #{dataState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com\zzg\mybatis\entity.Level">
+    update level
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="modifieDate != null">
+        modifie_date = #{modifieDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteDate != null">
+        delete_date = #{deleteDate,jdbcType=VARCHAR},
+      </if>
+      <if test="deleter != null">
+        deleter = #{deleter,jdbcType=VARCHAR},
+      </if>
+      <if test="dataState != null">
+        data_state = #{dataState,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com\zzg\mybatis\entity.Level">
+    update level
+    set code = #{code,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      money = #{money,jdbcType=DECIMAL},
+      num = #{num,jdbcType=INTEGER},
+      creater = #{creater,jdbcType=VARCHAR},
+      modifie_date = #{modifieDate,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      delete_date = #{deleteDate,jdbcType=VARCHAR},
+      deleter = #{deleter,jdbcType=VARCHAR},
+      data_state = #{dataState,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
